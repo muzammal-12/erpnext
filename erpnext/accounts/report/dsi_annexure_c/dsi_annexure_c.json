@@ -1,0 +1,41 @@
+{
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "disable_prepared_report": 1,
+  "docstatus": 0,
+  "doctype": "Report",
+  "is_standard": "Yes",
+  "letterhead": null,
+  "module": "Accounts",
+  "name": "DSI Annexure C",
+  "owner": "Administrator",
+  "prepared_report": 0,
+  "ref_doctype": "Sales Invoice",
+  "report_name": "DSI Annexure C",
+  "report_type": "Query Report",
+  "roles": [],
+  "query": "SELECT\n  si.name AS \"Invoice ID\",\n  si.posting_date AS \"Date\",\n  si.customer_name AS \"Customer\",\n  si.tax_id AS \"NTN\",\n  si.tax_nic AS \"NIC\",\n  si.net_total AS \"Amount (PKR)\",\n  si.total_taxes_and_charges AS \"Sales Tax\",\n  si.company AS \"Company\"\nFROM `tabSales Invoice` si\nWHERE si.docstatus = 1\n  AND si.posting_date BETWEEN %(from_date)s AND %(to_date)s\n  AND si.company = %(company)s\nORDER BY si.posting_date DESC",
+  "filters": [
+    {
+      "fieldname": "from_date",
+      "label": "From Date",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "default": "2024-01-01"
+    },
+    {
+      "fieldname": "to_date",
+      "label": "To Date",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "default": "Today"
+    },
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company",
+      "reqd": 1
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "doctype": "Report",
+  "name": "SRB Sales Tax Report",
+  "ref_doctype": "Sales Invoice",
+  "module": "Accounts",
+  "report_type": "Query Report",
+  "is_standard": "Yes",
+  "filters": [
+    {
+      "fieldname": "from_date",
+      "label": "From Date",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "default": "today"
+    },
+    {
+      "fieldname": "to_date",
+      "label": "To Date",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "default": "today"
+    },
+    {
+      "fieldname": "company",
+      "label": "Company",
+      "fieldtype": "Link",
+      "options": "Company",
+      "reqd": 1
+    }
+  ]
+}

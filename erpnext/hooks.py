@@ -666,3 +666,16 @@ default_log_clearing_doctypes = {
 export_python_type_annotations = True
 
 fields_for_group_similar_items = ["qty", "amount"]
+
+query_reports = [
+    "DSI Annexure C",
+    "SRB Sales Tax Report",
+]
+
+fixtures = ["Custom Field", "Report", "Property Setter"]
+scheduler_events = {
+    "daily": [
+        "erpnext.accounts.report.dsi_annexure_c.export_to_csv.schedule_dsi_export",
+        "erpnext.accounts.report.srb_sales_tax_report.export_to_csv.schedule_srb_export"
+    ]
+}

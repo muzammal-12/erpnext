@@ -590,24 +590,6 @@
    "fieldname": "tab_9_tab",
    "fieldtype": "Tab Break",
    "label": "Tab 9"
-  },
-  {
-   "fieldname": "tax_nic",
-   "fieldtype": "Data",
-   "label": "NIC",
-   "length": 13
-  },
-  {
-   "fieldname": "tax_ntn",
-   "fieldtype": "Data",
-   "label": "NTN",
-   "length": 9
-  },
-  {
-   "fieldname": "tax_strn",
-   "fieldtype": "Data",
-   "label": "STRN",
-   "length": 13
   }
  ],
  "icon": "fa fa-user",
