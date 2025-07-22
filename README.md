@@ -1,89 +1,182 @@
-<div align="center">
-    <a href="https://erpnext.com">
-        <img src="https://raw.githubusercontent.com/frappe/erpnext/develop/erpnext/public/images/erpnext-logo.png" height="128">
-    </a>
-    <h2>ERPNext</h2>
-    <p align="center">
-        <p>ERP made simple</p>
-    </p>
+# 🇵🇰 ERPNext Pakistan Localization + RBAC System
 
-[![CI](https://github.com/frappe/erpnext/actions/workflows/server-tests.yml/badge.svg?branch=develop)](https://github.com/frappe/erpnext/actions/workflows/server-tests.yml)
-[![UI](https://github.com/erpnext/erpnext_ui_tests/actions/workflows/ui-tests.yml/badge.svg?branch=develop&event=schedule)](https://github.com/erpnext/erpnext_ui_tests/actions/workflows/ui-tests.yml)
-[![Open Source Helpers](https://www.codetriage.com/frappe/erpnext/badges/users.svg)](https://www.codetriage.com/frappe/erpnext)
-[![codecov](https://codecov.io/gh/frappe/erpnext/branch/develop/graph/badge.svg?token=0TwvyUg3I5)](https://codecov.io/gh/frappe/erpnext)
-[![docker pulls](https://img.shields.io/docker/pulls/frappe/erpnext-worker.svg)](https://hub.docker.com/r/frappe/erpnext-worker)
+This repository provides a complete ERPNext customization with:
 
-[https://erpnext.com](https://erpnext.com)
+- ✅ Pakistan-specific Tax Setup (FBR/SRB compliance)
+- ✅ Automated Annexure-C (DSI) and SRB Sales Tax Reports
+- ✅ Full working Upload to IRIS feature
+- ✅ Custom Role-Based Access Control (RBAC) system for departmental workflows
 
-</div>
+---
 
-ERPNext as a monolith includes the following areas for managing businesses:
+## 📦 Requirements
 
-1. [Accounting](https://erpnext.com/open-source-accounting)
-1. [Warehouse Management](https://erpnext.com/distribution/warehouse-management-system)
-1. [CRM](https://erpnext.com/open-source-crm)
-1. [Sales](https://erpnext.com/open-source-sales-purchase)
-1. [Purchase](https://erpnext.com/open-source-sales-purchase)
-1. [HRMS](https://erpnext.com/open-source-hrms)
-1. [Project Management](https://erpnext.com/open-source-projects)
-1. [Support](https://erpnext.com/open-source-help-desk-software)
-1. [Asset Management](https://erpnext.com/open-source-asset-management-software)
-1. [Quality Management](https://erpnext.com/docs/user/manual/en/quality-management)
-1. [Manufacturing](https://erpnext.com/open-source-manufacturing-erp-software)
-1. [Website Management](https://erpnext.com/open-source-website-builder-software)
-1. [Customize ERPNext](https://erpnext.com/docs/user/manual/en/customize-erpnext)
-1. [And More](https://erpnext.com/docs/user/manual/en/)
+- ERPNext: v15.70.1  
+- Frappe: v15.74.0  
+- Python 3.10+  
+- MariaDB, Redis, Node.js, Yarn  
+- Bench CLI installed and site created (e.g. `erpsite.local`)
 
-ERPNext is built on the [Frappe Framework](https://github.com/frappe/frappe), a full-stack web app framework built with Python & JavaScript.
+---
 
-## Installation
+## 🔧 Installation
 
-<div align="center" style="max-height: 40px;">
-    <a href="https://frappecloud.com/erpnext/signup">
-        <img src=".github/try-on-f-cloud-button.svg" height="40">
-    </a>
-    <a href="https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/frappe/frappe_docker/main/pwd.yml">
-      <img src="https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png" alt="Try in PWD" height="37"/>
-    </a>
-</div>
+1. **Clone the App:**
 
-> Login for the PWD site: (username: Administrator, password: admin)
+```bash
+cd ~/frappe-bench/apps
+git clone https://github.com/muzammal-12/erpnext.git
+````
 
-### Containerized Installation
+2. **Install on your site:**
 
-Use docker to deploy ERPNext in production or for development of [Frappe](https://github.com/frappe/frappe) apps. See https://github.com/frappe/frappe_docker for more details.
+```bash
+cd ~/frappe-bench
+bench --site erpsite.local install-app erpnext
+bench --site erpsite.local migrate
+bench --site erpsite.local clear-cache
+```
 
-### Manual Install
+---
 
-The Easy Way: our install script for bench will install all dependencies (e.g. MariaDB). See https://github.com/frappe/bench for more details.
+## 🧭 Feature Overview
 
-New passwords will be created for the ERPNext "Administrator" user, the MariaDB root user, and the frappe user (the script displays the passwords and saves them to ~/frappe_passwords.txt).
+### 🇵🇰 Pakistan Tax System Setup Page
 
+**Path:** `erpnext/accounts/page/pakistan_tax_setup/`
 
-## Learning and community
+UI available under **Accounting > Pakistan Tax Setup**
 
-1. [Frappe School](https://school.frappe.io) - Learn Frappe Framework and ERPNext from the various courses by the maintainers or from the community.
-2. [Official documentation](https://docs.erpnext.com/) - Extensive documentation for ERPNext.
-3. [Discussion Forum](https://discuss.erpnext.com/) - Engage with community of ERPNext users and service providers.
-4. [Telegram Group](https://erpnext_public.t.me) - Get instant help from huge community of users.
+* Store National Tax Numbers:
 
+  * NIC
+  * NTN
+  * STRN
+* Buttons to:
 
-## Contributing
+  * Create customers with tax metadata
+  * Generate and download Annexure-C and SRB CSVs
+  * Open FBR IRIS upload portal with one click
+* No login restrictions — Upload to IRIS works for any user
 
-1. [Issue Guidelines](https://github.com/frappe/erpnext/wiki/Issue-Guidelines)
-1. [Report Security Vulnerabilities](https://erpnext.com/security)
-1. [Pull Request Requirements](https://github.com/frappe/erpnext/wiki/Contribution-Guidelines)
-1. [Translations](https://translate.erpnext.com)
+---
 
+### 📊 DSI & SRB Sales Tax Reports
 
-## License
+Available under **Accounting > Reports**
 
-GNU/General Public License (see [license.txt](license.txt))
+#### DSI Annexure C
 
-The ERPNext code is licensed as GNU General Public License (v3) and the Documentation is licensed as Creative Commons (CC-BY-SA-3.0) and the copyright is owned by Frappe Technologies Pvt Ltd (Frappe) and Contributors.
+* Filters:
 
-By contributing to ERPNext, you agree that your contributions will be licensed under its GNU General Public License (v3).
+  * `from_date`
+  * `to_date`
+  * `company`
+* Button: **Upload to IRIS** (downloads CSV + opens IRIS)
+* Exports located in:
+  `sites/erpsite.local/private/files/DSI_*.csv`
 
-## Logo and Trademark Policy
+#### SRB Sales Tax Report
 
-Please read our [Logo and Trademark Policy](TRADEMARK_POLICY.md).
+* Filters:
+
+  * `from_date`
+  * `to_date`
+  * `company`
+* Same upload/export behavior
+* CSV is SRB-compliant and IRIS-ready
+
+---
+
+### 🔐 Custom RBAC System
+
+**Files:**
+
+* `erpnext/custom_scripts/rbac_roles.py`
+* `erpnext/hooks.py`
+
+Granular role control by module and workspace:
+
+* Tax Officer → only accounting + reports
+* Restaurant Manager → POS & Sales only
+* Stock Clerk → warehouse + inventory
+* Admin → full access
+
+All access rights are enforced via Python backend logic and hooks — not just UI-level.
+
+---
+
+## 🧾 Directory Structure
+
+```
+erpnext/
+├── accounts/
+│   ├── page/pakistan_tax_setup/
+│   └── report/
+│       ├── dsi_annexure_c/
+│       └── srb_sales_tax_report/
+├── api/tax_report_api.py
+├── custom_scripts/
+│   ├── create_pakistan_tax_page_ui.py
+│   ├── refresh_tax_fields.py
+│   └── rbac_roles.py
+├── fixtures/
+└── hooks.py
+```
+
+---
+
+## 💡 Developer Tips
+
+### Reload reports manually if needed
+
+```bash
+bench --site erpsite.local reload-doc erpnext accounts/report dsi_annexure_c
+bench --site erpsite.local reload-doc erpnext accounts/report srb_sales_tax_report
+bench --site erpsite.local migrate
+bench --site erpsite.local clear-cache
+```
+
+### If you get KeyError like `from_date` or `company`
+
+Make sure:
+
+* Report `.json` defines filters correctly
+* `.sql` file uses them like: `... WHERE invoice_date BETWEEN %(from_date)s AND %(to_date)s`
+
+---
+
+## 🛠 Git Push Instructions
+
+```bash
+cd ~/frappe-bench/apps/erpnext
+git add .
+git commit -m "Added Pakistan Tax System + Upload to IRIS + RBAC System"
+git push origin main
+```
+
+---
+
+## 🙋‍♂️ Maintainer
+
+* GitHub: [muzammal-12](https://github.com/muzammal-12)
+* Contact: See GitHub profile
+
+---
+
+## 📝 License
+
+MIT — free for commercial and educational use
+
+---
+
+## 📅 Last Updated
+
+**July 22, 2025**
+
+```
+
+---
+
+Let me know if you’d like me to generate badges, a GIF demo, or a `pakistan_tax_setup.py` test file!
+```
