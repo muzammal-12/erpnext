@@ -672,7 +672,7 @@ query_reports = [
     "SRB Sales Tax Report",
 ]
 
-fixtures = ["Custom Field", "Report", "Property Setter"]
+fixtures = ["Custom Field", "Report", "Property Setter", "Role", "Custom DocPerm"]
 scheduler_events = {
     "daily": [
         "erpnext.accounts.report.dsi_annexure_c.export_to_csv.schedule_dsi_export",
